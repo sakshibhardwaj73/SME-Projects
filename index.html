@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow standalone task manager">
+  <title>TaskFlow | Personal Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">TF</span>
+      <span><strong>TaskFlow</strong><small>Personal workspace</small></span>
+    </a>
+    <nav><a class="nav-link active" href="#tasks">✓ My Tasks</a></nav>
+    <div class="sidebar-bottom"><span class="dot"></span> Saved in this browser</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PERSONAL WORKSPACE</p>
+        <h1>My Tasks</h1>
+        <p class="muted">Plan your day, prioritize your work, and make progress.</p>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+        <button class="primary-btn" id="add-task" type="button">＋ Add task</button>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow light">MAKE TODAY COUNT</p>
+        <h2>Small steps lead to big results.</h2>
+        <p id="welcome-date">Make a little progress today.</p>
+      </div>
+      <div class="welcome-art" aria-hidden="true">✓</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card"><span>Total tasks</span><h2 id="total-tasks">0</h2><p>Everything on your list</p></article>
+      <article class="stat-card"><span>Completed</span><h2 id="completed-tasks">0</h2><p>Tasks you've finished</p></article>
+      <article class="stat-card"><span>Pending</span><h2 id="pending-tasks">0</h2><p>Still to do</p></article>
+      <article class="stat-card"><span>Overdue</span><h2 id="overdue-tasks">0</h2><p>Past due date</p></article>
+    </section>
+
+    <section class="panel progress-panel">
+      <div class="section-heading">
+        <div><h2>Today's progress</h2><p class="muted">A quick look at your completed tasks.</p></div>
+        <strong id="progress-label">0%</strong>
+      </div>
+      <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+    </section>
+
+    <form id="task-form" class="panel" hidden>
+      <div class="form-heading">
+        <div><p class="eyebrow">TASK DETAILS</p><h2 id="form-heading">Add a new task</h2></div>
+        <button class="icon-button" id="close-form" type="button" aria-label="Close form">×</button>
+      </div>
+      <div class="form-grid">
+        <div class="field full"><label for="task-title">Task title *</label><input id="task-title" required maxlength="150" placeholder="e.g. Finish project report"></div>
+        <div class="field"><label for="task-category">Category</label><select id="task-category"><option>Personal</option><option>Study</option><option>Work</option><option>Health</option><option>Shopping</option><option>Other</option></select></div>
+        <div class="field"><label for="task-priority">Priority</label><select id="task-priority"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+        <div class="field"><label for="task-due">Due date</label><input id="task-due" type="date"></div>
+        <div class="field"><label for="task-reminder">Reminder time (optional)</label><input id="task-reminder" type="time"></div>
+        <div class="field full"><label for="task-description">Notes / description</label><textarea id="task-description" rows="3" maxlength="1000" placeholder="Add a few details..."></textarea></div>
+      </div>
+      <div class="form-actions">
+        <button class="primary-btn" type="submit" id="save-task">Save task</button>
+        <button class="secondary-btn" id="cancel-task" type="button">Cancel</button>
+      </div>
+    </form>
+
+    <section class="panel" id="tasks">
+      <div class="section-heading list-heading">
+        <div><h2>Task list</h2><p class="muted">Search, sort, filter, and manage your work.</p></div>
+        <div class="small-actions">
+          <button class="secondary-btn" id="export-csv" type="button">Export CSV</button>
+          <button class="secondary-btn" id="export-json" type="button">Backup JSON</button>
+          <label class="secondary-btn import-label" for="import-json">Import backup</label>
+          <input id="import-json" type="file" accept="application/json,.json" hidden>
+        </div>
+      </div>
+      <div class="toolbar">
+        <input id="task-search" type="search" placeholder="Search title or notes..." aria-label="Search tasks">
+        <select id="task-filter" aria-label="Filter by status"><option value="all">All statuses</option><option value="pending">Pending</option><option value="completed">Completed</option><option value="overdue">Overdue</option></select>
+        <select id="priority-filter" aria-label="Filter by priority"><option value="all">All priorities</option><option>High</option><option>Medium</option><option>Low</option></select>
+        <select id="category-filter" aria-label="Filter by category"><option value="all">All categories</option><option>Personal</option><option>Study</option><option>Work</option><option>Health</option><option>Shopping</option><option>Other</option></select>
+        <select id="sort-tasks" aria-label="Sort tasks"><option value="created">Newest first</option><option value="due">Due date</option><option value="priority">Priority</option><option value="title">Title A–Z</option></select>
+      </div>
+      <div class="bulk-actions">
+        <label><input id="select-all-visible" type="checkbox"> Select visible tasks</label>
+        <button id="complete-selected" class="secondary-btn" type="button">Complete selected</button>
+        <button id="delete-selected" class="danger-btn" type="button">Delete selected</button>
+        <button id="clear-completed" class="secondary-btn" type="button">Clear completed</button>
+      </div>
+      <div id="task-list" class="task-list"></div>
+      <div class="table-footer"><span id="task-count">0 tasks</span><span>Changes save automatically in this browser.</span></div>
+    </section>
+    <footer>TaskFlow · Independent Task Manager · <span id="year"></span></footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

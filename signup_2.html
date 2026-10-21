@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+
+    <script>
+        function validation() {
+            let name = document.forms["signupForm"]["sname"].value;
+            let rollNumber = document.forms["signupForm"]["rollNumber"].value;
+            let email = document.forms["signupForm"]["email"].value;
+            let password = document.forms["signupForm"]["password"].value;
+
+            if (name == "" || rollNumber == "" || email == "" || password == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+            else if (name.length < 3) {
+                alert("Name must be at least 3 characters long");
+                return false;
+            }
+            else if (!valid(email)) {
+                alert("Enter a valid email address");
+                return false;
+            }
+            else if (password.length < 10) {
+                alert("Password must be at least 10 characters long");
+                return false;
+            }
+            else {
+                alert("Sign Up Successful!");
+                return true;
+            }
+        }
+
+        function valid(email) {
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;//this is a regular expression, 
+            return pattern.test(email);
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Sign Up</h2>
+
+    <form name="signupForm" onsubmit="return validation()" method="post">
+
+        <input type="text" placeholder="Name" name="sname" required><br><br>
+
+        <input type="text" placeholder="Roll Number" name="rollNumber" required><br><br>
+
+        <input type="text" placeholder="Email" name="email" required><br><br>
+
+        <input type="password" placeholder="Password" name="password" required><br><br>
+
+        <input type="submit" value="Submit">
+
+        <input type="button" value="Sign In" onclick="window.location.href='login.html'">
+
+    </form>
+</body>
+</html>

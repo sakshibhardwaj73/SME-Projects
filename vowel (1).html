@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+
+<script>
+let arr = ['a', 'b', 'e', 'k', 'i', 'o', 'u'];
+
+arr.forEach(function(value) {
+    if(value == 'a' || value == 'e' || value == 'i' || value == 'o' || value == 'u') {
+        document.getElementById("demo").innerHTML += value + "<br>";
+    }
+});
+</script>
+</body>
+</html>

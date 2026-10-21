@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Remove Paragraph</title>
+
+    <script>
+        function Add() {
+            let p = document.createElement("p");
+
+            p.innerHTML ="My para is wrong so give right way "
+            p.id = "My";
+            document.getElementById("container").appendChild(p);
+        }
+
+        function Remove() {
+            document.getElementById("container").lastElementChild.remove();
+        }
+    </script>
+</head> 
+<body>
+    <h1>Paragraph Example</h1>
+
+    <p id="para">Hello Welcome</p>
+
+    <div id="container">
+
+    <button onclick="Add()">Add</button>
+    <button onclick="Remove()">Remove</button>
+</body>
+</html>

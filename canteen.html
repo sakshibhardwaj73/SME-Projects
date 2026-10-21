@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Canteen Meal Planner</title>
+   
+</head>
+<body>
+
+<h2>Smart Canteen Meal Planner</h2>
+
+<p>Burger - Rs.80</p>
+<p>Sandwich - Rs.60</p>
+<p>Pizza - Rs.120</p>
+<p>French Fries - Rs.50</p>
+<p>Cold Coffee - Rs.70</p>
+
+<label>Enter Budget:</label>
+<input type="number" id="budget"><br><br>
+
+<label>Enter Number of Items:</label>
+<input type="number" id="n"><br><br>
+
+<button onclick="calculateBill()">Calculate Bill</button>
+
+<p id="demo"></p>
+
+<script>
+function calculateBill() {
+
+    let budget = Number(document.getElementById("budget").value);
+    let n = Number(document.getElementById("n").value);
+
+    while (n <= 0) {
+        document.getElementById("demo").innerHTML =
+            "Enter number of items greater than zero";
+        return;
+    }
+
+    let total = 0;
+
+    for (let i = 1; i <= n; i++) {
+
+        let food = prompt("Enter food item " + i +
+        ": Burger, Sandwich, Pizza, French Fries, Cold Coffee");
+
+        let price = 0;
+
+        if (food == "Burger") {
+            price = 80;
+        }
+        else if (food == "Sandwich") {
+            price = 60;
+        }
+        else if (food == "Pizza") {
+            price = 120;
+        }
+        else if (food == "French Fries") {
+            price = 50;
+        }
+        else if (food == "Cold Coffee") {
+            price = 70;
+        }
+        else {
+            alert("Invalid food item");
+            i--;
+            continue;
+        }
+
+        total = total + price;
+    }
+
+    let discount = 0;
+
+    if (total > 300) {
+        discount = total * 10 / 100;
+    }
+
+    let bill = total - discount;
+
+    if (bill <= budget) {
+        document.getElementById("demo").innerHTML =
+            "Total Bill: Rs. " + total + "<br>" +
+            "Discount: Rs. " + discount + "<br>" +
+            "Final Bill: Rs. " + bill + "<br>" +
+            "You can afford this meal!";
+    }
+    else {
+        document.getElementById("demo").innerHTML =
+            "Total Bill: Rs. " + total + "<br>" +
+            "Discount: Rs. " + discount + "<br>" +
+            "Final Bill: Rs. " + bill + "<br>" +
+            "You need a larger budget!";
+    }
+}
+</script>
+
+</body>
+</html>

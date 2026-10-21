@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Student Registration</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #b5b5b5;
+        }
+
+        .header {
+            text-align: center;
+            background: #34216b;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 25px;
+            margin: 5px;
+        }
+
+        .header p {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #34216b;
+        }
+
+        .photo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #34216b;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #name {
+            text-transform: uppercase;
+        }
+
+        .gender-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gender-options label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: normal;
+        }
+
+        .gender-options input {
+            width: auto;
+        }
+
+        .terms {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-weight: normal;
+        }
+
+        .terms input {
+            width: auto;
+            margin-top: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 5px;
+            background: #34216b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #message {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        /* Smooth transition for all fields */
+    input, textarea, select {
+        transition: all 0.25s ease;
+    }
+
+    /* When the user clicks or types in a field */
+    input:focus, textarea:focus, select:focus {
+        transform: scale(1.03);
+        border-color: #5145a5;
+        color: #5145a5;
+        box-shadow: 0 0 8px rgba(81, 69, 165, 0.3);
+    }
+
+    /* Change placeholder colour when focused */
+    input:focus::placeholder,
+    textarea:focus::placeholder {
+        color: #9face6;
+    }
+
+    /* Highlight the submit button on hover */
+    input[type="submit"]:hover {
+        background-color: #302580;
+    }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Lamrin Tech Skills University,Punjab</h1>
+        <p>Student Admission and Registration Portal</p>
+    </div>
+
+   
+
+    <form id="registrationForm"
+          onsubmit="return validateForm(event)">
+
+        <div class="login">
+            <img id="photo"
+                 src="https://tse1.mm.bing.net/th/id/OIP.peTlY4MW6dM1Osd0xQf5GwAAAA?r=0&pid=Api&h=220&P=0"
+                 alt="logo">
+
+           
+        </div>
+<h2>Create Student Account</h2>
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name"
+                   placeholder="Enter full name"
+                   oninput="this.value=this.value.toUpperCase()"
+                   pattern="[A-Za-z ]+"
+                   title="Enter letters and spaces only"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email"
+                   placeholder="student@example.com"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone"
+                   placeholder="10-digit mobile number"
+                   pattern="[6-9][0-9]{9}"
+                   maxlength="10"
+                   inputmode="numeric"
+                   title="Enter a valid 10-digit Indian mobile number"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth *</label>
+            <input type="date" id="dob"
+                   max="2026-10-14" required>
+        </div>
+
+        <div class="form-group">
+            <label>Gender *</label>
+            <div class="gender-options">
+                <label>
+                    <input type="radio" name="gender"
+                           value="Male" required> Male
+                </label>
+
+                <label>
+                    <input type="radio" name="gender"
+                           value="Female"> Female
+                </label>
+
+                <label>
+                    <input type="radio" name="gender"
+                           value="Other"> Other
+                </label>
+
+                <label>
+                    <input type="radio" name="gender"
+                           value="Prefer not to say">
+                    Prefer not to say
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="course">Course *</label>
+            <select id="course" required>
+                <option value="">Select Course</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="BCA">BCA</option>
+                <option value="BBA">BBA</option>
+                <option value="MBA">MBA</option>
+                <option value="MCA">MCA</option>
+                <option value="B.Sc">B.Sc</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="branch">Department / Branch *</label>
+            <select id="branch" required>
+                <option value="">Select Branch</option>
+                <option value="CSE Core">Computer Science Engineering</option>
+                <option value="IT">Information Technology</option>
+                <option value="ECE">Electronics and Communication</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+                <option value="Civil">Civil Engineering</option>
+                <option value="Management">Management</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Academic Year *</label>
+            <select id="year" required>
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address *</label>
+            <textarea id="address" rows="3"
+                      placeholder="Enter your full address"
+                      required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Create Password *</label>
+            <input type="password" id="password"
+                   placeholder="Minimum 8 characters"
+                   minlength="8" required>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password *</label>
+            <input type="password" id="confirmPassword"
+                   placeholder="Re-enter password" required>
+        </div>
+
+        <div class="form-group">
+            <label class="terms">
+                <input type="checkbox" id="terms" required>
+                I confirm that the information provided is correct.
+            </label>
+        </div>
+
+        <button type="submit"
+                onmouseover="mouseOver(this)"
+                onmouseout="mouseOut(this)">
+            Register Now
+        </button>
+
+        <p id="message" role="status"></p>
+
+    </form>
+
+    <div class="footer">
+        University Student Registration Portal
+    </div>
+
+</div>
+
+<script>
+    function previewPhoto(event) {
+        let file = event.target.files[0];
+        let message = document.getElementById("message");
+
+        if (!file) {
+            return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+            message.style.color = "red";
+            message.innerHTML = "Please select a valid image.";
+            event.target.value = "";
+            return;
+        }
+
+        if (file.size > 2 * 1024 * 1024) {
+            message.style.color = "red";
+            message.innerHTML = "Photo size must be below 2 MB.";
+            event.target.value = "";
+            return;
+        }
+
+        document.getElementById("photoPreview").src =
+            URL.createObjectURL(file);
+
+        message.innerHTML = "";
+    }
+
+    function validateForm(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("name").value.trim();
+        let password = document.getElementById("password").value;
+        let confirmPassword =
+            document.getElementById("confirmPassword").value;
+        let dob = document.getElementById("dob").value;
+        let photo = document.getElementById("photo").files[0];
+        let message = document.getElementById("message");
+
+        if (!photo) {
+            message.style.color = "red";
+            message.innerHTML = "Please upload your photo.";
+            return false;
+        }
+
+        if (name === "") {
+            message.style.color = "red";
+            message.innerHTML = "Please enter your full name.";
+            return false;
+        }
+
+        if (dob > "2026-10-14") {
+            message.style.color = "red";
+            message.innerHTML = "Date of birth cannot be in the future.";
+            return false;
+        }
+
+        if (password.length < 8) {
+            message.style.color = "red";
+            message.innerHTML =
+                "Password must contain at least 8 characters.";
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            message.style.color = "red";
+            message.innerHTML = "Passwords do not match.";
+            return false;
+        }
+
+        message.style.color = "green";
+        message.innerHTML =
+            "Registration successful! Form validated.";
+
+        return true;
+    }
+
+    function mouseOver(button) {
+        button.style.backgroundColor = "orange";
+        button.innerHTML = "Click to Register";
+    }
+
+    function mouseOut(button) {
+        button.style.backgroundColor = "#34216b";
+        button.innerHTML = "Register Now";
+    }
+</script>
+
+</body>
+</html>

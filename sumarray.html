@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<p id="demo1"></p>
+<script>
+let arr = [10, 25, 30, 40, 59];
+let sum = 0;
+
+arr.forEach(function(value) {
+    sum = sum + value;
+});
+
+document.getElementById("demo").innerHTML = "Sum = " + sum;
+
+arr.forEach(function(value) {
+    if(value % 2 == 0) {
+        document.getElementById("demo1").innerHTML += value + "<br>";
+    }
+});
+</script>
+</body>
+</html>

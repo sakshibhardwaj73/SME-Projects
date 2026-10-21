@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Calculator using Do While Loop</h3>
+<p id="demo"></p>
+
+<script>
+let ch;
+
+do {
+    let a = Number(prompt("Enter first number:"));
+    let b = Number(prompt("Enter second number:"));
+    let op = prompt("Enter op (+, -, *, /):");
+    let sum;
+
+    switch (op) {
+        case "+":
+            sum = a + b;
+            break;
+
+        case "-":
+            sum = a - b;
+            break;
+
+        case "*":
+            sum = a * b;
+            break;
+
+        case "/":
+            sum = a / b;
+            break;
+
+        default:
+            sum = "Invalid operator";
+    }
+
+    document.getElementById("demo").innerHTML +=
+        a + " " + op + " " + b + " = " + sum + "<br>";
+
+    ch = prompt("Do you want to continue (y/n):");
+
+} while (ch == "y");
+
+document.getElementById("demo").innerHTML += "Thank you for your time!";
+</script>
+
+</body>
+</html>

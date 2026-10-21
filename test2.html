@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        function displaymessage() {
+            let p = document.getElementById('para');
+
+            p.innerHTML = "Hii welcome";
+            p.style.fontSize = "100px";
+            p.style.color = "red";
+        }
+
+        function show() {
+            console.log("hiiiii");
+        }
+    </script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>OK</h1>
+
+    <h1 id="para">Hello!</h1>
+
+    <button onclick="displaymessage()">Display Message</button>
+
+    <p onclick="displaymessage()">Display Message</p>
+
+    <button onclick="show()">Show</button>
+</body>
+</html>

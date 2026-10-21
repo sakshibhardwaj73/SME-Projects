@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Array</title>
+</head>
+<body>
+
+    <input type="text" id="search" placeholder="Enter language">
+    <button onclick="search()">Search</button>
+
+    <p id="demo"></p>
+
+    <script>
+        let arr = ["java", "c++", "python", "html", "js"];
+
+        function search() {
+            let s = document.getElementById("search").value;
+            let found = false;
+
+            arr.forEach(function(value) {
+                if(value == s) {
+                    found = true;
+                }
+            });
+
+            if(found == true) {
+                document.getElementById("demo").innerHTML = "Element found";
+            }
+            else {
+                document.getElementById("demo").innerHTML = "Element not found";
+            }
+        }
+    </script>
+
+</body>
+</html>

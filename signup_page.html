@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eaf2f8;
+            text-align: center;
+            margin: 30px;
+        }
+
+        .box {
+            background: white;
+            width: 320px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input, select, textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 7px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #123456;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            cursor: pointer;
+        }
+
+        a { color: blue; }
+    </style>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    <form>
+        <input type="text" placeholder="Name" required><br>
+        <input type="text" placeholder="Roll Number" required><br>
+        <input type="text" placeholder="Course" required><br>
+        <select required>
+            <option value="">Select Course</option>
+            <option value="1">CSE</option>
+            <option value="2">ECE</option>
+            <option value="3">ME</option>
+            <option value="4">CE</option>
+            <option value="5">CH</option>
+            <option value="6">EEE</option>
+        </select>
+        <textarea placeholder="Address" required></textarea>
+        <input type="text" placeholder="Email" required><br>
+        <select required>
+            <option value="">Select Semester</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+        </select>
+        <input type="tel" placeholder="Mobile Number" maxlength="10" required>
+        <form>
+            <p>Select your gender:</p>
+        <input type="radio" name="gender" value="male" required> Male
+        <input type="radio" name="gender" value="female" required> Female      
+        <input type="radio" name="gender" value="other" required> Other       
+        <input type="radio" name="gender" value="Prefer not to say" required> Prefer not to say
+        </form>
+        <button type="submit">Sign Up</button>
+        <p>Already registered?
+        <a href="login.html">Login</a>
+    </p>
+</div>
+
+</body>
+</html>

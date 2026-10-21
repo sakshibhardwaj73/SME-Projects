@@ -1,0 +1,21 @@
+<script>
+function func1()
+{
+    document.getElementById("para").style.color="red";
+}
+function func2()
+{
+    document.getElementById("para").style.color="blue";
+}
+
+function modifyText()
+{
+    const namefield=document.getElementById("name");
+    namefield.value=namefield.value.toUpperCase();
+}
+</script>
+
+<p id="para"> Welcome </p>
+<h2 onmouseout="func1()">Onmouse OUT event heading example</h2>
+<h2 onmouseover="func2()">Onmouse OVER event heading example</h2>
+<input type="text" id="name" oninput="modifyText()">
